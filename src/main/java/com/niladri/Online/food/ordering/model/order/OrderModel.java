@@ -11,7 +11,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,7 +19,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "order")
+@Table(name = "order_model")
 public class OrderModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,9 +27,9 @@ public class OrderModel {
 	private Long totalAmount;
 	private String orderStatus;
 	private LocalDateTime createdAt;
-//	private Payment payment;
-	private Integer totalItem;
-	private Integer totalPrice;
+	//	private Payment payment;
+	private int totalItem;
+	private int totalPrice;
 
 	@ManyToOne
 	private UserModel customer;

@@ -1,29 +1,37 @@
-package com.niladri.Online.food.ordering.model.ingredient;
+package com.niladri.Online.food.ordering.model.review;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.niladri.Online.food.ordering.model.ingredientCategory.IngredientCategoryModel;
 import com.niladri.Online.food.ordering.model.resturant.ResturantModel;
+import com.niladri.Online.food.ordering.model.user.UserModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "ingredient_model")
-public class IngredientModel {
+@Table(name = "review_model")
+public class ReviewModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long ingredientId;
-	private String ingredientName;
+	private Long reviewId;
+
 	@ManyToOne
-	private IngredientCategoryModel ingredientCategory;
+	private UserModel customer;
+
+	@ManyToOne
 	@JsonIgnore
-	@ManyToOne
 	private ResturantModel restaurant;
-	private boolean inStock=true;
+
+	private String message;
+
+	private double rating;
+
+	private LocalDateTime createdAt;
 }
