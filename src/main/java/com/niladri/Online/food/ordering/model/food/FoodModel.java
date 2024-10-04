@@ -18,7 +18,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "food")
+@Table(name = "food_model")
 public class FoodModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,15 +28,16 @@ public class FoodModel {
 	private Integer foodPrice;
 
 	@ManyToOne
-	private List<FoodCategoryModel> foodCategory;
+	private FoodCategoryModel foodCategory;
 
 	@Column(length = 1000)
 	@ElementCollection
-	private String foodImages;
+	private List<String> foodImages;
 
 	private boolean foodAvailable;
+
 	@ManyToOne
-	private List<ResturantModel> restaurant;
+	private ResturantModel restaurant;
 	private boolean isVegetarian;
 	private boolean isSeasonal;
 	@ManyToMany

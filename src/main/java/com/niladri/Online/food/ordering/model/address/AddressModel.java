@@ -11,17 +11,15 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "address")
+@Table(name = "address_model")
 public class AddressModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long addressId;
-	private String address;
+	private String addressLine1;
+	private String streetAddress;
 	private String city;
 	private String state;
 	private String country;
 	private String zipCode;
-	private String phone;
-	private String email;
-	private String status;
 }
