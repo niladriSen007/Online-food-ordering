@@ -28,9 +28,8 @@ public class JwtTokenValidator extends OncePerRequestFilter {
 	                                FilterChain filterChain) throws ServletException, IOException {
 		
 			String jwtHeader = request.getHeader(JwtConstants.JWT_HEADER);
-			if(jwtHeader==null){
-				throw new BadCredentialsException("No Token Found");
-			}else{
+
+			if(jwtHeader!=null){
 				jwtHeader = jwtHeader.replace("Bearer ","");
 				try{
 
