@@ -1,7 +1,7 @@
 package com.niladri.Online.food.ordering.model.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.niladri.Online.food.ordering.dto.resturant.ResturantDto;
+import com.niladri.Online.food.ordering.dto.resturant.ResturantResponseDto;
 import com.niladri.Online.food.ordering.model.address.AddressModel;
 import com.niladri.Online.food.ordering.model.order.OrderModel;
 import jakarta.persistence.*;
@@ -35,7 +35,7 @@ public class UserModel {
 	private List<OrderModel> orders = new ArrayList<>();
 
 	@ElementCollection
-	private List<ResturantDto> favorites = new ArrayList<>();
+	private List<ResturantResponseDto> favorites = new ArrayList<>();
 
 	@OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
 	private List<AddressModel> addresses = new ArrayList<>();

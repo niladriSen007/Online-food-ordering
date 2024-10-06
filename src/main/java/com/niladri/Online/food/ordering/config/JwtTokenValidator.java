@@ -76,7 +76,7 @@ public class JwtTokenValidator extends OncePerRequestFilter {
 					String email = String.valueOf(claims.get("email"));
 					String authorities = String.valueOf(claims.get("authorities"));
 
-					log.debug("Authorities: {}",authorities);
+					log.info("Authorities: {}",authorities);
 
 
 //					The selected code is responsible for converting a comma-separated string
@@ -123,6 +123,7 @@ public class JwtTokenValidator extends OncePerRequestFilter {
 //					SecurityContextHolder.getContext().setAuthentication(authentication);
 
 					SecurityContextHolder.getContext().setAuthentication(authentication);
+					log.info("Authentication: {}",authentication);
 				}catch (Exception e){
 					throw new BadCredentialsException("Invalid Token");
 				}
@@ -138,7 +139,6 @@ public class JwtTokenValidator extends OncePerRequestFilter {
 //		In the context of the `JwtTokenValidator` class, this line ensures that after the
 //		JWT token is validated and the security context is set, the request proceeds through
 //		the remaining filters and eventually reaches the intended endpoint.
-
 		filterChain.doFilter(request,response);
 
 	}
