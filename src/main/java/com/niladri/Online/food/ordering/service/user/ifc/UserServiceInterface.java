@@ -9,5 +9,5 @@ public interface UserServiceInterface {
 
 	AuthResponseDto loginUser(LoginRequestDto loginRequestDto);
 
-	AuthResponseDto getUserProfile(String authorizationToken);
+	AuthResponseDto getUserProfileByJwt(String authorizationToken);
 }

@@ -8,11 +8,12 @@ import java.util.List;
 
 @Data
 @Embeddable
-public class ResturantDto {
+public class ResturantResponseDto {
 
 	private Long resturantId;
 	private String resturantName;
 	private String resturantDescription;
+	private String cuisineType;
 	@Column(length = 1000)
 	private List<String> images;
 

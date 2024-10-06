@@ -1,4 +1,4 @@
-package com.niladri.Online.food.ordering.mapper;
+package com.niladri.Online.food.ordering.mapper.user;
 
 import com.niladri.Online.food.ordering.dto.user.UserResponseDto;
 import com.niladri.Online.food.ordering.model.user.UserModel;

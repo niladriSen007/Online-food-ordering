@@ -22,7 +22,7 @@ public class UserController {
 	}
 
 	@GetMapping("/profile")
-	public ResponseEntity<AuthResponseDto> getUserProfile(@RequestHeader("Authorization") String authorizationToken) {
-		return ResponseEntity.ok(userService.getUserProfile(authorizationToken));
+	public ResponseEntity<AuthResponseDto> getUserProfileByJwt(@RequestHeader("Authorization") String authorizationToken) {
+		return ResponseEntity.ok(userService.getUserProfileByJwt(authorizationToken));
 	}
 }

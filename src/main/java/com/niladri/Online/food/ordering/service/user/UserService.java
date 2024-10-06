@@ -5,7 +5,7 @@ import com.niladri.Online.food.ordering.dto.response.auth.AuthResponseDto;
 import com.niladri.Online.food.ordering.dto.response.auth.LoginRequestDto;
 import com.niladri.Online.food.ordering.dto.user.UserResponseDto;
 import com.niladri.Online.food.ordering.exception.UserAlreadyExists;
-import com.niladri.Online.food.ordering.mapper.UserMapper;
+import com.niladri.Online.food.ordering.mapper.user.UserMapper;
 import com.niladri.Online.food.ordering.model.cart.CartModel;
 import com.niladri.Online.food.ordering.model.user.Roles;
 import com.niladri.Online.food.ordering.model.user.UserModel;
@@ -123,7 +123,7 @@ public class UserService implements UserServiceInterface {
 	}
 
 	@Override
-	public AuthResponseDto getUserProfile(String authorizationToken) {
+	public AuthResponseDto getUserProfileByJwt(String authorizationToken) {
 		String email = jwtProvider.getEmailFromToken(authorizationToken);
 		UserModel user = userRepository.findByEmail(email);
 		if(user == null){
