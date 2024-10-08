@@ -58,7 +58,7 @@ public class ResturantController {
 	                                                            @RequestHeader("Authorization") String token) {
 		UserResponseDto user = userService.getUserProfileByJwt(token).getUser();
 		if (user == null) {
-			throw new BadCredentialsException("You need to login first to add restaurants to favourites");
+			throw new BadCredentialsException("You need to login first to add resturants to favourites");
 		}
 		return new ResponseEntity<>(resturantService.addToFavourites(resturantId, user), HttpStatus.OK);
 	}

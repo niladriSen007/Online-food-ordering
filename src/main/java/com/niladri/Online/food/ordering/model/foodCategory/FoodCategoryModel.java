@@ -23,7 +23,7 @@ public class FoodCategoryModel {
 
 	@JsonIgnore
 	@ManyToOne
-	private ResturantModel Restaurant;
+	private ResturantModel resturant;
 
 
 }

@@ -17,7 +17,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "ingredient_category_model")
+//@Table(name = "ingredient_category_model")
 public class IngredientCategoryModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,8 +27,9 @@ public class IngredientCategoryModel {
 
 	@JsonIgnore
 	@ManyToOne
-	private ResturantModel restaurant;
+	private ResturantModel resturant;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "ingredientCategory", cascade = CascadeType.ALL)
 	private List<IngredientModel> ingredients = new ArrayList<>();
 }

@@ -43,4 +43,71 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<>(errorResponseDto, HttpStatus.BAD_REQUEST);
 	};
 
+	@ExceptionHandler(ResourceNotFound.class)
+	public ResponseEntity<ErrorResponseDto> handleResourceNotFoundException
+			(ResourceNotFound ex, WebRequest webRequest) {
+		ErrorResponseDto errorResponseDto = new ErrorResponseDto(
+				webRequest.getDescription(false),
+				ex.getMessage(),
+				HttpStatus.NOT_FOUND,
+				LocalDateTime.now()
+		);
+
+		return new ResponseEntity<>(errorResponseDto, HttpStatus.NOT_FOUND);
+	};
+
+
+	@ExceptionHandler(IngredientCategoryAlreadyExists.class)
+	public ResponseEntity<ErrorResponseDto> handleIngredientCategoryAlreadyExistsException
+			(IngredientCategoryAlreadyExists ex, WebRequest webRequest) {
+		ErrorResponseDto errorResponseDto = new ErrorResponseDto(
+				webRequest.getDescription(false),
+				ex.getMessage(),
+				HttpStatus.NOT_FOUND,
+				LocalDateTime.now()
+		);
+
+		return new ResponseEntity<>(errorResponseDto, HttpStatus.NOT_FOUND);
+	};
+
+	@ExceptionHandler(ResturantAlreadyExist.class)
+	public ResponseEntity<ErrorResponseDto> handleResturantAlreadyExistsException
+			(ResturantAlreadyExist ex, WebRequest webRequest) {
+		ErrorResponseDto errorResponseDto = new ErrorResponseDto(
+				webRequest.getDescription(false),
+				ex.getMessage(),
+				HttpStatus.NOT_FOUND,
+				LocalDateTime.now()
+		);
+
+		return new ResponseEntity<>(errorResponseDto, HttpStatus.NOT_FOUND);
+	};
+
+
+	@ExceptionHandler(FoodCategoryAlreadyExists.class)
+	public ResponseEntity<ErrorResponseDto> handleFoodCategoryAlreadyExistsException
+			(FoodCategoryAlreadyExists ex, WebRequest webRequest) {
+		ErrorResponseDto errorResponseDto = new ErrorResponseDto(
+				webRequest.getDescription(false),
+				ex.getMessage(),
+				HttpStatus.NOT_FOUND,
+				LocalDateTime.now()
+		);
+
+		return new ResponseEntity<>(errorResponseDto, HttpStatus.NOT_FOUND);
+	};
+
+	@ExceptionHandler(IngredientAlreadyExists.class)
+	public ResponseEntity<ErrorResponseDto> handleIngredientAlreadyExistsException
+			(IngredientAlreadyExists ex, WebRequest webRequest) {
+		ErrorResponseDto errorResponseDto = new ErrorResponseDto(
+				webRequest.getDescription(false),
+				ex.getMessage(),
+				HttpStatus.NOT_FOUND,
+				LocalDateTime.now()
+		);
+
+		return new ResponseEntity<>(errorResponseDto, HttpStatus.NOT_FOUND);
+	};
+
 }

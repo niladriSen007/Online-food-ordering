@@ -45,11 +45,11 @@ public class ResturantModel {
 	private String openingHours;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "resturant", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ReviewModel> reviews;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "resturant", cascade = CascadeType.ALL)
 	private List<OrderModel> orders = new ArrayList<>();
 
 	@Column(length = 1000)
@@ -57,7 +57,7 @@ public class ResturantModel {
 	private List<String> resturantImages;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "resturant", cascade = CascadeType.ALL)
 	private List<FoodModel> foods = new ArrayList<>();
 
 }

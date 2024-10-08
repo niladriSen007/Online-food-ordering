@@ -36,7 +36,7 @@ public class OrderModel {
 
 	@JsonIgnore
 	@ManyToOne
-	private ResturantModel restaurant;
+	private ResturantModel resturant;
 
 	@ManyToOne
 	private AddressModel deliveryAddress;

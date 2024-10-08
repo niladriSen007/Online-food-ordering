@@ -24,6 +24,6 @@ public class IngredientModel {
 	private IngredientCategoryModel ingredientCategory;
 	@JsonIgnore
 	@ManyToOne
-	private ResturantModel restaurant;
+	private ResturantModel resturant;
 	private boolean inStock=true;
 }
