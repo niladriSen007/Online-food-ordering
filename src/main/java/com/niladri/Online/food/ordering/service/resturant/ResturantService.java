@@ -4,6 +4,7 @@ import com.niladri.Online.food.ordering.dto.resturant.ResturantRequestDto;
 import com.niladri.Online.food.ordering.dto.resturant.ResturantResponseDto;
 import com.niladri.Online.food.ordering.dto.user.UserResponseDto;
 import com.niladri.Online.food.ordering.exception.ResourceNotFound;
+import com.niladri.Online.food.ordering.exception.ResturantAlreadyExist;
 import com.niladri.Online.food.ordering.mapper.resturant.ResturantMapper;
 import com.niladri.Online.food.ordering.mapper.user.UserMapper;
 import com.niladri.Online.food.ordering.model.address.AddressModel;
@@ -35,11 +36,17 @@ public class ResturantService implements ResturantServiceInterface {
 	@Override
 	public List<ResturantModel> findResturantByName(String keyword) {
 		return resturantRepository.findBySearchWord(keyword);
+//		return null;
 	}
 
 	@Override
 	public ResturantResponseDto createResturant(ResturantRequestDto resturantRequest,
 	                                            UserResponseDto user) {
+
+		ResturantModel resturantOld = resturantRepository.findByResturantName(resturantRequest.getResturantName());
+		if (resturantOld != null) {
+			throw new ResturantAlreadyExist("Resturant already exist with name: " + resturantRequest.getResturantName());
+		}
 
 		AddressModel address = new AddressModel();
 		address.setAddressLine1(resturantRequest.getAddress().getAddressLine1());
@@ -70,7 +77,7 @@ public class ResturantService implements ResturantServiceInterface {
 	public ResturantModel updateResturant(Long resturantId, ResturantRequestDto resturantRequest) {
 		ResturantModel resturant = resturantRepository.findById(resturantId).orElse(null);
 		if (resturant == null) {
-			throw new ResourceNotFound("Restaurant", "resturantId", resturantId);
+			throw new ResourceNotFound("Resturant", "resturantId", resturantId);
 		}
 
 		AddressModel savedAddress = new AddressModel();
@@ -115,7 +122,7 @@ public class ResturantService implements ResturantServiceInterface {
 	public void deleteResturant(Long retsurantId) {
 		ResturantModel resturant = resturantRepository.findById(retsurantId).orElse(null);
 		if (resturant == null) {
-			throw new ResourceNotFound("Restaurant", "resturantId", retsurantId);
+			throw new ResourceNotFound("Resturant", "resturantId", retsurantId);
 		}
 		resturantRepository.delete(resturant);
 	}
@@ -129,7 +136,7 @@ public class ResturantService implements ResturantServiceInterface {
 	public ResturantModel findResturantById(Long resturantId) {
 		ResturantModel resturant = resturantRepository.findById(resturantId).orElse(null);
 		if (resturant == null) {
-			throw new ResourceNotFound("Restaurant", "resturantId", resturantId);
+			throw new ResourceNotFound("Resturant", "resturantId", resturantId);
 		}
 		return resturant;
 	}
@@ -138,7 +145,7 @@ public class ResturantService implements ResturantServiceInterface {
 	public ResturantModel findResturantByOwner(Long ownerId) {
 		ResturantModel resturant = resturantRepository.findByOwnerUserId(ownerId);
 		if(resturant == null){
-			throw new ResourceNotFound("Restaurant", "ownerId", ownerId);
+			throw new ResourceNotFound("Resturant", "ownerId", ownerId);
 		}
 		return resturant;
 	}
@@ -147,7 +154,7 @@ public class ResturantService implements ResturantServiceInterface {
 	public String addToFavourites(Long resturantId, UserResponseDto user) {
 		ResturantModel resturant = findResturantById(resturantId);
 		if (resturant == null) {
-			throw new ResourceNotFound("Restaurant", "resturantId", resturantId);
+			throw new ResourceNotFound("Resturant", "resturantId", resturantId);
 		}
 		ResturantResponseDto resturantResponseDto = ResturantMapper
 										.mapResturantModelToResturantResponseDto(resturant);
@@ -176,7 +183,7 @@ public class ResturantService implements ResturantServiceInterface {
 	public String changeResturantStatus(Long resturantId) {
 		ResturantModel resturant = findResturantById(resturantId);
 		if (resturant == null) {
-			throw new ResourceNotFound("Restaurant", "resturantId", resturantId);
+			throw new ResourceNotFound("Resturant", "resturantId", resturantId);
 		}
 		resturant.setOpen(!resturant.isOpen());
 		resturantRepository.save(resturant);

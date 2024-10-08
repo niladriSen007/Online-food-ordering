@@ -27,7 +27,7 @@ public class ReviewModel {
 
 	@ManyToOne
 	@JsonIgnore
-	private ResturantModel restaurant;
+	private ResturantModel resturant;
 
 	private String message;
 

@@ -10,8 +10,10 @@ import java.util.List;
 @Repository
 public interface ResturantRepository extends JpaRepository<ResturantModel, Long> {
 
-	@Query("SELECT r FROM ResturantModel r WHERE lower(r.resturantName) LIKE lower(%?1%) OR lower(r.resturantDescription) LIKE lower(%?1%)")
+	@Query("SELECT r FROM ResturantModel r WHERE lower(r.resturantName) LIKE lower(concat('%',:keyword,'%')) ")
 	List<ResturantModel> findBySearchWord(String keyword);
 
 	ResturantModel findByOwnerUserId(Long ownerId);
+
+	ResturantModel findByResturantName(String resturantName);
 }

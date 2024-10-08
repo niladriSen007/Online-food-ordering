@@ -25,7 +25,7 @@ public class FoodModel {
 	private Long foodId;
 	private String foodName;
 	private String foodDescription;
-	private Integer foodPrice;
+	private int foodPrice;
 
 	@ManyToOne
 	private FoodCategoryModel foodCategory;
@@ -37,7 +37,7 @@ public class FoodModel {
 	private boolean foodAvailable;
 
 	@ManyToOne
-	private ResturantModel restaurant;
+	private ResturantModel resturant;
 	private boolean isVegetarian;
 	private boolean isSeasonal;
 	@ManyToMany
